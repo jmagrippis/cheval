@@ -1,22 +1,28 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { teal500, teal700, orangeA200 } from 'material-ui/styles/colors'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import logo from './logo.svg'
-import './App.css'
+import Body from './Body/Body'
+
+const muiTheme = getMuiTheme({
+  fontFamily: 'Raleway, sans-serif',
+  palette: {
+    primary1Color: teal500,
+    primary2Color: teal700,
+    accent1Color: orangeA200,
+    pickerHeaderColor: teal500
+  }
+})
 
 class App extends Component {
   render () {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <Body />
+      </MuiThemeProvider>
     )
   }
 }

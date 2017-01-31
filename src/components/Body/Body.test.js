@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import App from './App'
+import Body from './Body'
 
-describe('App', () => {
+describe('Body', () => {
   it('renders without crashing', () => {
-    const component = shallow(<App />)
+    const component = shallow(<Body />)
     expect(component.length).toBe(1)
   })
 })
