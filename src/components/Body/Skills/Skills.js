@@ -2,8 +2,17 @@
 
 import React, { Component } from 'react'
 import map from 'lodash/map'
+import styled from 'styled-components'
 
 import Skill from './Skill/Skill'
+
+const Container = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 
 type Props = {
   setSkillValue: Function,
@@ -17,7 +26,7 @@ class Skills extends Component {
     const { skills, setSkillValue } = this.props
 
     return (
-      <div>
+      <Container>
         {map(skills, ({ id, name, value }) => (
           <Skill
             key={id}
@@ -26,7 +35,7 @@ class Skills extends Component {
             value={value}
           />
         ))}
-      </div>
+      </Container>
     )
   }
 }

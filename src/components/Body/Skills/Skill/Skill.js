@@ -2,12 +2,17 @@
 
 import React, { Component } from 'react'
 import Slider from 'material-ui/Slider'
+import styled from 'styled-components'
 
 type Props = {
   name: string,
   onChange: Function,
   value: number
 };
+
+const Container = styled.div`
+  width: 100%;
+`
 
 class Skill extends Component {
   props: Props;
@@ -16,14 +21,14 @@ class Skill extends Component {
     const { name, onChange, value } = this.props
 
     return (
-      <div>
+      <Container>
         <div>{name}</div>
         <Slider
           defaultValue={0.5}
           value={value}
           onChange={onChange}
         />
-      </div>
+      </Container>
     )
   }
 }

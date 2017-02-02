@@ -1,8 +1,20 @@
 /* @flow */
 
 import React, { Component } from 'react'
+import styled from 'styled-components'
 
 import Skills from './Skills/Skills'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const Title = styled.h1`
+  font-size: 2em;
+  text-align: center;
+`
 
 class Body extends Component {
   state = {
@@ -31,15 +43,13 @@ class Body extends Component {
   render () {
     const { skills } = this.state
     return (
-      <div>
-        <div>
-          <h2>Rate your skills!</h2>
-        </div>
+      <Container>
+        <Title>Rate your skills!</Title>
         <Skills
           setSkillValue={this.setSkillValue}
           skills={skills}
         />
-      </div>
+      </Container>
     )
   }
 }
