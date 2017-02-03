@@ -1,10 +1,10 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import map from 'lodash/map'
 import styled from 'styled-components'
 
 import Skill from './Skill/Skill'
+import type { SkillsState } from '../../../types'
 
 const Container = styled.div`
   flex-grow: 1;
@@ -16,18 +16,24 @@ const Container = styled.div`
 
 type Props = {
   setSkillValue: Function,
-  skills: { [key:string]: Object }
+  skills: SkillsState
 };
+
+type DefaultProps = {
+  skills: SkillsState
+}
 
 class Skills extends Component {
   props: Props;
+
+  static defaultProps: DefaultProps
 
   render () {
     const { skills, setSkillValue } = this.props
 
     return (
       <Container>
-        {map(skills, ({ id, name, value }) => (
+        {skills.map(({ id, name, value }) => (
           <Skill
             key={id}
             name={name}
@@ -38,6 +44,10 @@ class Skills extends Component {
       </Container>
     )
   }
+}
+
+Skills.defaultProps = {
+  skills: []
 }
 
 export default Skills
