@@ -8,3 +8,9 @@ script:
   - yarn build
 cache:
   yarn: true
+deploy:
+  - provider: script
+    script: scripts/deploy.sh staging
+    skip_cleanup: true
+    on:
+      branch: master
