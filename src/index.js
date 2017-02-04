@@ -7,7 +7,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import 'reset-css'
 
 import './index.css'
+import { setUser } from './actions/user'
 import App from './components/App'
+import firebase from './firebase'
 import store from './store'
 
 injectTapEventPlugin()
@@ -18,3 +20,16 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 )
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    store.dispatch(setUser({
+      id: user.uid,
+      avatar: user.photoUrl,
+      email: user.email,
+      name: user.displayName
+    }))
+  } else {
+    store.dispatch(setUser(null))
+  }
+})

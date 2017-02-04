@@ -1,7 +1,8 @@
 import firebase from 'firebase/app'
+import 'firebase/auth'
 import 'firebase/database'
 
-const firebaseApp = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: 'AIzaSyCxPmbz85XT8_uzVg4bplzTQKP5jsuomXc',
   authDomain: 'cheval-stg.firebaseapp.com',
   databaseURL: 'https://cheval-stg.firebaseio.com',
@@ -9,4 +10,4 @@ const firebaseApp = firebase.initializeApp({
   messagingSenderId: '1042725072618'
 })
 
-export default firebaseApp
+export default firebase

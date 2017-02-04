@@ -1,7 +1,7 @@
 /* @flow */
 
 import { SET_SKILL_VALUE } from '../constants/actionTypes'
-import type { Action, SkillsState } from '../types'
+import type { SET_SKILL_VALUE_ACTION, SkillsState } from '../types'
 
 export const defaultState = [
   {
@@ -16,7 +16,7 @@ export const defaultState = [
   }
 ]
 
-const skills = (state: SkillsState = defaultState, { type, id, value }: Action = {}): SkillsState => {
+const skills = (state: SkillsState = defaultState, { type, id, value }: SET_SKILL_VALUE_ACTION = {}): SkillsState => {
   switch (type) {
     case SET_SKILL_VALUE:
       let exists = false

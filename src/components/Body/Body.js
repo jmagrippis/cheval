@@ -2,47 +2,37 @@
 
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 
-import Skills from './Skills/Skills'
+import Assessment from './Assessment/Assessment'
+import Login from './Login/Login'
 import { setSkillValue } from '../../actions/skills'
-import type { AppState, SkillsState } from '../../types'
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`
-
-const Title = styled.h1`
-  font-size: 2em;
-  text-align: center;
-`
+import type { AppState, SkillsState, User } from '../../types'
 
 type Props = {
   setSkillValue: Function,
-  skills: SkillsState
+  skills: SkillsState,
+  user: ?User
 };
 
 export class Body extends PureComponent {
   props: Props;
 
   render () {
-    const { skills, setSkillValue } = this.props
-    return (
-      <Container>
-        <Title>Rate your skills!</Title>
-        <Skills
+    const { skills, setSkillValue, user } = this.props
+    return user
+      ? (
+        <Assessment
           setSkillValue={setSkillValue}
           skills={skills}
         />
-      </Container>
-    )
+      )
+      : <Login />
   }
 }
 
 export const mapStateToProps = (state: AppState): { skills: SkillsState } => ({
-  skills: state.skills
+  skills: state.skills,
+  user: state.user
 })
 
 export const mapDispatchToProps = (dispatch: Function) => ({

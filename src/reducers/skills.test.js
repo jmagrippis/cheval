@@ -3,7 +3,7 @@ import { setSkillValue } from '../actions/skills'
 
 describe('skills', () => {
   it('returns its default state', () => {
-    expect(reducer(undefined, {})).toEqual(defaultState)
+    expect(reducer(undefined, {})).toBe(defaultState)
   })
 
   describe('setSkillValue', () => {
