@@ -23,9 +23,10 @@ ReactDOM.render(
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    console.log(user)
     store.dispatch(setUser({
       id: user.uid,
-      avatar: user.photoUrl,
+      avatar: user.photoURL,
       email: user.email,
       name: user.displayName
     }))

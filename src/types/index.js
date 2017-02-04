@@ -15,7 +15,12 @@ export type User = {
   name: string
 }
 
+export type FetchingState = {
+  auth: boolean
+}
+
 export type AppState = {
+  fetching: FetchingState,
   skills: SkillsState,
   user: ?User
 }
