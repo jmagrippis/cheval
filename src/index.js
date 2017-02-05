@@ -9,7 +9,7 @@ import 'reset-css'
 import './index.css'
 import { setUser } from './actions/user'
 import App from './components/App'
-import firebase from './firebase'
+import { auth, db } from './firebase'
 import store from './store'
 
 injectTapEventPlugin()
@@ -21,15 +21,23 @@ ReactDOM.render(
   document.getElementById('root')
 )
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log(user)
-    store.dispatch(setUser({
-      id: user.uid,
-      avatar: user.photoURL,
-      email: user.email,
-      name: user.displayName
-    }))
+auth.onAuthStateChanged((authUser) => {
+  if (authUser) {
+    const id = authUser.uid
+    db.ref(`/users/${id}`).once('value').then((snapshot) => {
+      const dbUser = snapshot.val()
+      const user = {
+        id,
+        avatar: dbUser ? dbUser.avatar : authUser.photoURL,
+        email: dbUser ? dbUser.email : authUser.email,
+        name: dbUser ? dbUser.name : authUser.displayName,
+        role: dbUser ? dbUser.role : 'Prawn'
+      }
+      store.dispatch(setUser(user))
+      if (!dbUser) {
+        db.ref(`/users/${id}`).set(user)
+      }
+    })
   } else {
     store.dispatch(setUser(null))
   }

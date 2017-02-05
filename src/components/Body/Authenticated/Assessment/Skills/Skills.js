@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import Skill from './Skill/Skill'
-import type { SkillsState } from '../../../../types'
+import type { SkillsState } from '../../../../../types'
 
 const Container = styled.div`
   flex-grow: 1;

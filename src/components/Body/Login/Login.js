@@ -3,7 +3,7 @@
 import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
-import firebase, { googleProvider } from '../../../firebase'
+import { auth, googleProvider } from '../../../firebase'
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
 
 class Login extends PureComponent {
   authRedirect () {
-    firebase.auth().signInWithRedirect(googleProvider)
+    auth.signInWithRedirect(googleProvider)
   }
 
   render () {

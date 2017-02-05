@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
 import AppLoading from './AppLoading/AppLoading'
-import Assessment from './Assessment/Assessment'
+import Authenticated from './Authenticated/Authenticated'
 import Login from './Login/Login'
 import { setSkillValue } from '../../actions/skills'
 import type { AppState, SkillsState, User } from '../../types'
@@ -24,9 +24,10 @@ export class Body extends PureComponent {
     if (authenticating) return <AppLoading />
     return user
       ? (
-        <Assessment
+        <Authenticated
           setSkillValue={setSkillValue}
           skills={skills}
+          user={user}
         />
       )
       : <Login />
