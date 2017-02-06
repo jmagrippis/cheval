@@ -26,16 +26,23 @@ export type AppState = {
   user: ?User
 }
 
+export type SET_SKILLS_ACTION = {
+  type: 'SET_SKILLS',
+  skills: Array<Skill>
+}
+
 export type SET_SKILL_VALUE_ACTION = {
   type: 'SET_SKILL_VALUE',
   id: string,
   value: number
 }
 
+export type SKILLS_ACTION = SET_SKILLS_ACTION & SET_SKILL_VALUE_ACTION
+
 export type SET_USER_ACTION = {
   type: 'SET_USER',
   user: ?User
 }
 
-export type Action = SET_SKILL_VALUE_ACTION |
+export type Action = SKILLS_ACTION &
   SET_USER_ACTION

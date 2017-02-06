@@ -12,6 +12,7 @@ type Props = {
 
 const Container = styled.div`
   width: 100%;
+  text-transform: capitalize;
 `
 
 class Skill extends Component {

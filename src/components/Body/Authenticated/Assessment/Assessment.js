@@ -23,6 +23,7 @@ const Role = styled.div`
   font-size: 1.5em;
   line-height: 1.5em;
   text-align: center;
+  text-transform: capitalize;
 `
 
 type Props = {

@@ -1,9 +1,46 @@
 import reducer, { defaultState } from './skills'
-import { setSkillValue } from '../actions/skills'
+import { setSkills, setSkillValue } from '../actions/skills'
 
 describe('skills', () => {
   it('returns its default state', () => {
     expect(reducer(undefined, {})).toBe(defaultState)
+  })
+
+  describe('setSkills', () => {
+    it('replaces the current state with the given skills', () => {
+      const state = []
+      Object.freeze(state)
+      const skills = [
+        {
+          id: 'some-skill',
+          name: 'Some Skill',
+          value: 0.6
+        },
+        {
+          id: 'anotherSkill',
+          name: 'Cooking',
+          value: 0.1
+        }
+      ]
+      const newState = reducer(state, setSkills(skills))
+      expect(newState).toBe(skills)
+
+      Object.freeze(newState)
+      const moreSkills = [
+        {
+          id: 'ultimate-skill',
+          name: 'Ultimate Skill',
+          value: 0.99
+        }
+      ]
+
+      const newStateB = reducer(newState, setSkills(moreSkills))
+      expect(newStateB).toBe(moreSkills)
+
+      Object.freeze(newStateB)
+      const emptyArray = []
+      expect(reducer(newStateB, setSkills(emptyArray))).toBe(emptyArray)
+    })
   })
 
   describe('setSkillValue', () => {
