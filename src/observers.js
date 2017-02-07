@@ -15,7 +15,7 @@ export const onAuthChange = (authUser) => {
         avatar: dbUser ? dbUser.avatar : authUser.photoURL,
         email: dbUser ? dbUser.email : authUser.email,
         name: dbUser ? dbUser.name : authUser.displayName,
-        role: dbUser ? dbUser.role : 'Prawn',
+        role: dbUser ? dbUser.role : 'prawn',
         skills: dbUser ? dbUser.skills : {}
       }
       store.dispatch(setUser(user))
