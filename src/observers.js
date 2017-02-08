@@ -1,11 +1,14 @@
+/* @flow */
+
 import reduce from 'lodash/reduce'
 
 import { setSkills } from './actions/skills'
 import { setUser } from './actions/user'
 import { db } from './firebase'
 import store from './store'
+import type { FirebaseUser } from './types'
 
-export const onAuthChange = (authUser) => {
+export const onAuthChange = (authUser: FirebaseUser) => {
   if (authUser) {
     const id = authUser.uid
     db.ref(`/users/${id}`).once('value').then((snapshot) => {
