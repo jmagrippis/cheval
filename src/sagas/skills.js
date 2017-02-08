@@ -1,13 +1,19 @@
 /* @flow */
 
-import { select, throttle } from 'redux-saga/effects'
+import { call, select, throttle } from 'redux-saga/effects'
 
-import { getSkillIdValuesMap } from '../reducers'
+import { getSkillIdValuesMap, getUserId } from '../reducers'
 import { SET_SKILL_VALUE } from '../constants/actionTypes'
+import { writeUserSkills } from '../firebase'
 import type { Action } from '../types'
 
 export function* persistSkillValues (action: Action): Generator<*, void, *> {
-  yield select(getSkillIdValuesMap)
+  const [id, skills] = yield [
+    select(getUserId),
+    select(getSkillIdValuesMap)
+  ]
+  if (!id) return
+  yield call(writeUserSkills, id, skills)
 }
 
 export default function* watchSetValue (): Generator<*, void, *> {

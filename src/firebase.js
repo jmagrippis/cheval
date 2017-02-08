@@ -17,4 +17,7 @@ export const db = firebase.database()
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
 
+export const writeUserSkills = (userId: string, skills: Array<{ [key: string]: number }>): Promise<*> =>
+  db.ref(`users/${userId}/skills`).set(skills)
+
 export default firebase

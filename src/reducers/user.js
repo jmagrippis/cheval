@@ -5,7 +5,7 @@ import type { SET_USER_ACTION, User } from '../types'
 
 export const defaultState = null
 
-const skills = (state: ?User = defaultState, { type, user }: SET_USER_ACTION = {}): ?User => {
+const user = (state: ?User = defaultState, { type, user }: SET_USER_ACTION = {}): ?User => {
   switch (type) {
     case SET_USER:
       return user
@@ -14,4 +14,4 @@ const skills = (state: ?User = defaultState, { type, user }: SET_USER_ACTION = {
   }
 }
 
-export default skills
+export default user

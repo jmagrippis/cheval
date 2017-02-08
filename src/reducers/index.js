@@ -18,4 +18,6 @@ export const getSkillIdValuesMap = (state: AppState) => state.skills.reduce((acc
   return accumulator
 }, {})
 
+export const getUserId = (state: AppState) => state.user && state.user.id
+
 export default cheval
