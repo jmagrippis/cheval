@@ -28,7 +28,8 @@ export type User = {
   avatar: string,
   email: string,
   name: string,
-  role: string
+  role: string,
+  company: ?string
 }
 
 export type FetchingState = {

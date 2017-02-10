@@ -2,6 +2,7 @@
 
 import reduce from 'lodash/reduce'
 
+import { setCompanyValues } from './actions/companyValues'
 import { setSkills } from './actions/skills'
 import { setUser } from './actions/user'
 import { db } from './firebase'
@@ -16,6 +17,8 @@ export const onAuthChange = (authUser: FirebaseUser) => {
       const user = {
         id,
         avatar: dbUser ? dbUser.avatar : authUser.photoURL,
+        company: dbUser ? dbUser.company : null,
+        companyValues: dbUser && dbUser.skills ? dbUser.skills : {},
         email: dbUser ? dbUser.email : authUser.email,
         name: dbUser ? dbUser.name : authUser.displayName,
         role: dbUser ? dbUser.role : 'prawn',
@@ -33,6 +36,20 @@ export const onAuthChange = (authUser: FirebaseUser) => {
             id,
             name,
             value: user.skills[id] ? user.skills[id] : 0.5
+          }))
+          return accumulator
+        }, [])))
+      })
+
+      if (!user.company) return
+
+      db.ref(`/companies/${user.company}/values`).once('value').then((snapshot) => {
+        const companyValues = snapshot.val()
+        store.dispatch(setCompanyValues(reduce(companyValues, (accumulator, name, id) => {
+          accumulator.push(Object.assign({}, {
+            id,
+            name,
+            value: user.companyValues[id] ? user.companyValues[id] : 0.5
           }))
           return accumulator
         }, [])))
