@@ -1,5 +1,13 @@
 /* @flow */
 
+export type CompanyValue = {
+  id: string,
+  name: string,
+  value: number
+}
+
+export type CompanyValuesState = Array<CompanyValue>
+
 export type Skill = {
   id: string,
   name: string,
@@ -28,10 +36,24 @@ export type FetchingState = {
 }
 
 export type AppState = {
+  companyValues: CompanyValuesState,
   fetching: FetchingState,
   skills: SkillsState,
   user: ?User
 }
+
+export type SET_COMPANY_VALUES_ACTION = {
+  type: 'SET_COMPANY_VALUES',
+  companyValues: Array<Skill>
+}
+
+export type SET_COMPANY_VALUE_VALUE_ACTION = {
+  type: 'SET_COMPANY_VALUE_VALUE',
+  id: string,
+  value: number
+}
+
+export type COMPANY_VALUES_ACTION = SET_COMPANY_VALUES_ACTION & SET_COMPANY_VALUE_VALUE_ACTION
 
 export type SET_SKILLS_ACTION = {
   type: 'SET_SKILLS',

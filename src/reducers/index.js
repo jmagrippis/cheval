@@ -2,12 +2,14 @@
 
 import { combineReducers } from 'redux'
 
+import companyValues from './companyValues'
 import fetching from './fetching'
 import skills from './skills'
 import user from './user'
 import type { AppState } from '../types'
 
 const cheval = combineReducers({
+  companyValues,
   fetching,
   skills,
   user

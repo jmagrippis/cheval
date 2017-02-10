@@ -2,7 +2,7 @@ import { setSkills, setSkillValue } from './skills'
 
 describe('skills', () => {
   describe('setSkills', () => {
-    it('returns a SET_SKILLS action, with a `skills` propertiy', () => {
+    it('returns a SET_SKILLS action, with a `skills` property', () => {
       const skills = [{ id: 'mad' }, { id: 'skills' }]
       expect(setSkills(skills)).toEqual({
         type: 'SET_SKILLS',
