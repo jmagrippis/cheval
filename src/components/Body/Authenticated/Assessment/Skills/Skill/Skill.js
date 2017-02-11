@@ -1,12 +1,13 @@
 /* @flow */
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import Slider from 'material-ui/Slider'
 import styled from 'styled-components'
 
 type Props = {
+  id: string,
   name: string,
-  onChange: Function,
+  setSkillValue: Function,
   value: number
 };
 
@@ -15,11 +16,16 @@ const Container = styled.div`
   text-transform: capitalize;
 `
 
-class Skill extends Component {
+class Skill extends PureComponent {
   props: Props;
 
+  onChange = (event: Object, value: number) => {
+    const { id, setSkillValue } = this.props
+    setSkillValue(id, value)
+  }
+
   render () {
-    const { name, onChange, value } = this.props
+    const { name, value } = this.props
 
     return (
       <Container>
@@ -28,7 +34,7 @@ class Skill extends Component {
           defaultValue={0.5}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={this.onChange}
         />
       </Container>
     )
