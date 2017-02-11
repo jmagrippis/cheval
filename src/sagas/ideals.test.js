@@ -1,7 +1,7 @@
 import { call, select } from 'redux-saga/effects'
 
 import { persistIdeals } from './ideals'
-import { writeUserIdeals } from '../firebase'
+import { writeUserIdeals } from '../db/writers'
 import { getIdealsIdValuesMap, getUserId } from '../reducers'
 
 describe('persistIdeals', () => {
