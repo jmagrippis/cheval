@@ -20,9 +20,9 @@ export const getIdValuesMap = (arr: Array<{ id: string, value: number, [key: str
   return accumulator
 }, {})
 
-export const getSkillIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.skills)
-
 export const getCompanyValuesIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.companyValues)
+
+export const getSkillIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.skills)
 
 export const getUserId = (state: AppState) => state.user && state.user.id
 
