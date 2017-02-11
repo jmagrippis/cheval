@@ -1,6 +1,7 @@
 /* @flow */
 
 import React, { PureComponent } from 'react'
+import Paper from 'material-ui/Paper'
 import Slider from 'material-ui/Slider'
 import styled from 'styled-components'
 
@@ -29,13 +30,16 @@ class Skill extends PureComponent {
 
     return (
       <Container>
-        <div>{name}</div>
-        <Slider
-          defaultValue={0.5}
-          name={name}
-          value={value}
-          onChange={this.onChange}
-        />
+        <Paper style={{ marginBottom: '1em', padding: '1em' }} zDepth={1}>
+          <div>{name}</div>
+          <Slider
+            defaultValue={0.5}
+            name={name}
+            sliderStyle={{ margin: '2em 0' }}
+            value={value}
+            onChange={this.onChange}
+          />
+        </Paper>
       </Container>
     )
   }
