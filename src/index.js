@@ -9,7 +9,7 @@ import 'reset-css'
 import './index.css'
 import App from './components/App'
 import { auth } from './firebase'
-import { onAuthChange } from './observers'
+import { onAuthChange } from './db/observers'
 import store from './store'
 
 injectTapEventPlugin()

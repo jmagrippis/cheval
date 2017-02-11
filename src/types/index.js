@@ -20,13 +20,6 @@ export type Skill = {
 
 export type SkillsState = Array<Skill>
 
-export type FirebaseUser = {
-  uid: string,
-  displayName: string,
-  email: string,
-  isAnonymous: boolean,
-  photoURL: string
-}
 export type User = {
   id: string,
   avatar: string,
@@ -34,6 +27,14 @@ export type User = {
   name: string,
   role: string,
   company: ?string
+}
+
+export type FirebaseUser = {
+  uid: string,
+  displayName: string,
+  email: string,
+  isAnonymous: boolean,
+  photoURL: string
 }
 
 export type FetchingState = {

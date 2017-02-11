@@ -4,8 +4,6 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 
-import type { IdToValueMap } from './types'
-
 firebase.initializeApp({
   apiKey: 'AIzaSyCxPmbz85XT8_uzVg4bplzTQKP5jsuomXc',
   authDomain: 'cheval-stg.firebaseapp.com',
@@ -18,14 +16,5 @@ export const auth = firebase.auth()
 export const db = firebase.database()
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
-
-export const writeUserProperty = (userId: string, property: string, value: *): Promise<*> =>
-  db.ref(`users/${userId}/${property}`).set(value)
-
-export const writeUserIdeals = (userId: string, companyValues: IdToValueMap): Promise<*> =>
-  writeUserProperty(userId, 'ideals', companyValues)
-
-export const writeUserSkills = (userId: string, skills: IdToValueMap): Promise<*> =>
-  writeUserProperty(userId, 'skills', skills)
 
 export default firebase
