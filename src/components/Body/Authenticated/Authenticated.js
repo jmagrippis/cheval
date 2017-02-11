@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import Assessment from './Assessment/Assessment'
 import Header from './Header/Header'
-import type { CompanyValuesState, SkillsState, User } from '../../../types'
+import type { IdealsState, SkillsState, User } from '../../../types'
 
 const Container = styled.div`
   display: flex;
@@ -16,8 +16,8 @@ const Container = styled.div`
 
 type Props = {
   company: ?string,
-  companyValues: CompanyValuesState,
-  setCompanyValueValue: Function,
+  ideals: IdealsState,
+  setIdealValue: Function,
   setSkillValue: Function,
   skills: SkillsState,
   user: User
@@ -29,9 +29,9 @@ class Authenticated extends PureComponent {
   render () {
     const {
       company,
-      companyValues,
+      ideals,
       skills,
-      setCompanyValueValue,
+      setIdealValue,
       setSkillValue,
       user
     } = this.props
@@ -43,9 +43,9 @@ class Authenticated extends PureComponent {
         />
         <Assessment
           company={company}
-          companyValues={companyValues}
+          ideals={ideals}
           role={user.role}
-          setCompanyValueValue={setCompanyValueValue}
+          setIdealValue={setIdealValue}
           setSkillValue={setSkillValue}
           skills={skills}
         />

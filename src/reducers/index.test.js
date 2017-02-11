@@ -1,5 +1,5 @@
 import {
-  getCompanyValuesIdValuesMap,
+  getIdealsIdValuesMap,
   getIdValuesMap,
   getSkillIdValuesMap
 } from './'
@@ -32,29 +32,29 @@ describe('selectors', () => {
     })
   })
 
-  describe('getCompanyValuesIdValuesMap', () => {
+  describe('getIdealsIdValuesMap', () => {
     it('returns the skill values keyed to their ids', () => {
       const state = {
-        companyValues: [
+        ideals: [
           { id: 'some', value: 0.5 },
-          { id: 'companyValues', value: 0.75 }
+          { id: 'ideals', value: 0.75 }
         ]
       }
 
-      expect(getCompanyValuesIdValuesMap(state)).toEqual({
+      expect(getIdealsIdValuesMap(state)).toEqual({
         some: 0.5,
-        companyValues: 0.75
+        ideals: 0.75
       })
 
       const stateB = {
-        companyValues: [
+        ideals: [
           { id: 'another', value: 0.11 }
         ]
       }
 
-      expect(getCompanyValuesIdValuesMap(stateB)).toEqual({ another: 0.11 })
+      expect(getIdealsIdValuesMap(stateB)).toEqual({ another: 0.11 })
 
-      expect(getCompanyValuesIdValuesMap({ companyValues: [] })).toEqual({})
+      expect(getIdealsIdValuesMap({ ideals: [] })).toEqual({})
     })
   })
 

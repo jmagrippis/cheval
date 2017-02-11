@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
 import Skills from './Skills/Skills'
-import type { CompanyValuesState, SkillsState } from '../../../../types'
+import type { IdealsState, SkillsState } from '../../../../types'
 
 const Container = styled.div`
   flex: 1;
@@ -30,9 +30,9 @@ const Header = styled.h2`
 
 type Props = {
   company: ?string,
-  companyValues: CompanyValuesState,
+  ideals: IdealsState,
   role: string,
-  setCompanyValueValue: Function,
+  setIdealValue: Function,
   setSkillValue: Function,
   skills: SkillsState
 };
@@ -43,10 +43,10 @@ class Assessment extends PureComponent {
   render () {
     const {
       company,
-      companyValues,
+      ideals,
       role,
       skills,
-      setCompanyValueValue,
+      setIdealValue,
       setSkillValue
     } = this.props
     return (
@@ -59,13 +59,13 @@ class Assessment extends PureComponent {
             skills={skills}
           />
         </section>
-        {company && companyValues.length
+        {company && ideals.length
           ? (
             <section>
               <Header>{company} values</Header>
               <Skills
-                setSkillValue={setCompanyValueValue}
-                skills={companyValues}
+                setSkillValue={setIdealValue}
+                skills={ideals}
               />
             </section>
             )

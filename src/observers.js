@@ -2,7 +2,7 @@
 
 import reduce from 'lodash/reduce'
 
-import { setCompanyValues } from './actions/companyValues'
+import { setIdeals } from './actions/ideals'
 import { setSkills } from './actions/skills'
 import { setUser } from './actions/user'
 import { db } from './firebase'
@@ -18,8 +18,8 @@ export const onAuthChange = (authUser: FirebaseUser) => {
         id,
         avatar: dbUser ? dbUser.avatar : authUser.photoURL,
         company: dbUser ? dbUser.company : null,
-        companyValues: dbUser && dbUser.companyValues ? dbUser.companyValues : {},
         email: dbUser ? dbUser.email : authUser.email,
+        ideals: dbUser && dbUser.ideals ? dbUser.ideals : {},
         name: dbUser ? dbUser.name : authUser.displayName,
         role: dbUser ? dbUser.role : 'prawn',
         skills: dbUser && dbUser.skills ? dbUser.skills : {}
@@ -43,13 +43,13 @@ export const onAuthChange = (authUser: FirebaseUser) => {
 
       if (!user.company) return
 
-      db.ref(`/companies/${user.company}/values`).once('value').then((snapshot) => {
-        const companyValues = snapshot.val()
-        store.dispatch(setCompanyValues(reduce(companyValues, (accumulator, name, id) => {
+      db.ref(`/companies/${user.company}/ideals`).once('value').then((snapshot) => {
+        const ideals = snapshot.val()
+        store.dispatch(setIdeals(reduce(ideals, (accumulator, name, id) => {
           accumulator.push(Object.assign({}, {
             id,
             name,
-            value: user.companyValues[id] ? user.companyValues[id] : 0.5
+            value: user.ideals[id] ? user.ideals[id] : 0.5
           }))
           return accumulator
         }, [])))

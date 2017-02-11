@@ -4,13 +4,13 @@
 export type IdToValueMap = { [key: string]: number }
 
 // State
-export type CompanyValue = {
+export type Ideal = {
   id: string,
   name: string,
   value: number
 }
 
-export type CompanyValuesState = Array<CompanyValue>
+export type IdealsState = Array<Ideal>
 
 export type Skill = {
   id: string,
@@ -41,26 +41,26 @@ export type FetchingState = {
 }
 
 export type AppState = {
-  companyValues: CompanyValuesState,
   fetching: FetchingState,
+  ideals: IdealsState,
   skills: SkillsState,
   user: ?User
 }
 
 // Actions
 
-export type SET_COMPANY_VALUES_ACTION = {
-  type: 'SET_COMPANY_VALUES',
-  companyValues: Array<Skill>
+export type SET_IDEALS_ACTION = {
+  type: 'SET_IDEALS',
+  ideals: Array<Skill>
 }
 
-export type SET_COMPANY_VALUE_VALUE_ACTION = {
-  type: 'SET_COMPANY_VALUE_VALUE',
+export type SET_IDEAL_VALUE_ACTION = {
+  type: 'SET_IDEAL_VALUE',
   id: string,
   value: number
 }
 
-export type COMPANY_VALUES_ACTION = SET_COMPANY_VALUES_ACTION & SET_COMPANY_VALUE_VALUE_ACTION
+export type IDEALS_ACTION = SET_IDEALS_ACTION & SET_IDEAL_VALUE_ACTION
 
 export type SET_SKILLS_ACTION = {
   type: 'SET_SKILLS',

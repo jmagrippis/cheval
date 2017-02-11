@@ -6,14 +6,14 @@ import { connect } from 'react-redux'
 import AppLoading from './AppLoading/AppLoading'
 import Authenticated from './Authenticated/Authenticated'
 import Login from './Login/Login'
-import { setCompanyValueValue } from '../../actions/companyValues'
+import { setIdealValue } from '../../actions/ideals'
 import { setSkillValue } from '../../actions/skills'
-import type { AppState, CompanyValuesState, SkillsState, User } from '../../types'
+import type { AppState, IdealsState, SkillsState, User } from '../../types'
 
 type Props = {
   authenticating: Boolean,
-  companyValues: CompanyValuesState,
-  setCompanyValueValue: Function,
+  ideals: IdealsState,
+  setIdealValue: Function,
   setSkillValue: Function,
   skills: SkillsState,
   user: ?User
@@ -25,9 +25,9 @@ export class Body extends PureComponent {
   render () {
     const {
       authenticating,
-      companyValues,
+      ideals,
       skills,
-      setCompanyValueValue,
+      setIdealValue,
       setSkillValue,
       user
     } = this.props
@@ -36,8 +36,8 @@ export class Body extends PureComponent {
       ? (
         <Authenticated
           company={user.company}
-          companyValues={companyValues}
-          setCompanyValueValue={setCompanyValueValue}
+          ideals={ideals}
+          setIdealValue={setIdealValue}
           setSkillValue={setSkillValue}
           skills={skills}
           user={user}
@@ -49,14 +49,14 @@ export class Body extends PureComponent {
 
 export const mapStateToProps = (state: AppState): { skills: SkillsState } => ({
   authenticating: state.fetching.auth,
-  companyValues: state.companyValues,
+  ideals: state.ideals,
   skills: state.skills,
   user: state.user
 })
 
 export const mapDispatchToProps = (dispatch: Function) => ({
-  setCompanyValueValue (id: string, value: number) {
-    return dispatch(setCompanyValueValue(id, value))
+  setIdealValue (id: string, value: number) {
+    return dispatch(setIdealValue(id, value))
   },
   setSkillValue (id: string, value: number) {
     return dispatch(setSkillValue(id, value))

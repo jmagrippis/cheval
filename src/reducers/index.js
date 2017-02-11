@@ -2,14 +2,14 @@
 
 import { combineReducers } from 'redux'
 
-import companyValues from './companyValues'
 import fetching from './fetching'
+import ideals from './ideals'
 import skills from './skills'
 import user from './user'
 import type { AppState, IdToValueMap } from '../types'
 
 const cheval = combineReducers({
-  companyValues,
+  ideals,
   fetching,
   skills,
   user
@@ -20,7 +20,7 @@ export const getIdValuesMap = (arr: Array<{ id: string, value: number, [key: str
   return accumulator
 }, {})
 
-export const getCompanyValuesIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.companyValues)
+export const getIdealsIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.ideals)
 
 export const getSkillIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.skills)
 
