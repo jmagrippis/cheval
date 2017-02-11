@@ -18,7 +18,7 @@ export const onAuthChange = (authUser: FirebaseUser) => {
         id,
         avatar: dbUser ? dbUser.avatar : authUser.photoURL,
         company: dbUser ? dbUser.company : null,
-        companyValues: dbUser && dbUser.skills ? dbUser.skills : {},
+        companyValues: dbUser && dbUser.companyValues ? dbUser.companyValues : {},
         email: dbUser ? dbUser.email : authUser.email,
         name: dbUser ? dbUser.name : authUser.displayName,
         role: dbUser ? dbUser.role : 'prawn',

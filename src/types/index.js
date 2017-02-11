@@ -1,5 +1,9 @@
 /* @flow */
 
+// Common
+export type IdToValueMap = { [key: string]: number }
+
+// State
 export type CompanyValue = {
   id: string,
   name: string,
@@ -42,6 +46,8 @@ export type AppState = {
   skills: SkillsState,
   user: ?User
 }
+
+// Actions
 
 export type SET_COMPANY_VALUES_ACTION = {
   type: 'SET_COMPANY_VALUES',

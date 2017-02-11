@@ -6,7 +6,7 @@ import companyValues from './companyValues'
 import fetching from './fetching'
 import skills from './skills'
 import user from './user'
-import type { AppState } from '../types'
+import type { AppState, IdToValueMap } from '../types'
 
 const cheval = combineReducers({
   companyValues,
@@ -15,10 +15,14 @@ const cheval = combineReducers({
   user
 })
 
-export const getSkillIdValuesMap = (state: AppState) => state.skills.reduce((accumulator, { id, value }) => {
+export const getIdValuesMap = (arr: Array<{ id: string, value: number, [key: string]: * }>): IdToValueMap => arr.reduce((accumulator, { id, value }) => {
   accumulator[id] = value
   return accumulator
 }, {})
+
+export const getSkillIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.skills)
+
+export const getCompanyValuesIdValuesMap = (state: AppState): IdToValueMap => getIdValuesMap(state.companyValues)
 
 export const getUserId = (state: AppState) => state.user && state.user.id
 
