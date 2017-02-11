@@ -4,12 +4,13 @@ import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
 import Skills from './Skills/Skills'
-import type { SkillsState } from '../../../../types'
+import type { CompanyValuesState, SkillsState } from '../../../../types'
 
 const Container = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: 1070px;
   width: 100%;
 `
 
@@ -19,7 +20,8 @@ const Title = styled.h1`
   line-height: 2em;
   text-align: center;
 `
-const Role = styled.div`
+
+const Header = styled.h2`
   font-size: 1.5em;
   line-height: 1.5em;
   text-align: center;
@@ -27,7 +29,10 @@ const Role = styled.div`
 `
 
 type Props = {
+  company: ?string,
+  companyValues: CompanyValuesState,
   role: string,
+  setCompanyValueValue: Function,
   setSkillValue: Function,
   skills: SkillsState
 };
@@ -36,15 +41,35 @@ class Assessment extends PureComponent {
   props: Props;
 
   render () {
-    const { role, skills, setSkillValue } = this.props
+    const {
+      company,
+      companyValues,
+      role,
+      skills,
+      setCompanyValueValue,
+      setSkillValue
+    } = this.props
     return (
       <Container>
         <Title>Rate your skills!</Title>
-        <Role>Role: {role}</Role>
-        <Skills
-          setSkillValue={setSkillValue}
-          skills={skills}
-        />
+        <section>
+          <Header>Role: {role}</Header>
+          <Skills
+            setSkillValue={setSkillValue}
+            skills={skills}
+          />
+        </section>
+        {company && companyValues.length
+          ? (
+            <section>
+              <Header>{company} values</Header>
+              <Skills
+                setSkillValue={setCompanyValueValue}
+                skills={companyValues}
+              />
+            </section>
+            )
+          : null}
       </Container>
     )
   }
