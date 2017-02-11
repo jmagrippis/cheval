@@ -26,6 +26,7 @@ class Skill extends Component {
         <div>{name}</div>
         <Slider
           defaultValue={0.5}
+          name={name}
           value={value}
           onChange={onChange}
         />

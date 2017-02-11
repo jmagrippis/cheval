@@ -1,7 +1,7 @@
 import { call, select } from 'redux-saga/effects'
 
 import { persistSkillValues } from './skills'
-import { writeUserSkills } from '../firebase'
+import { writeUserSkills } from '../db/writers'
 import { getSkillIdValuesMap, getUserId } from '../reducers'
 
 describe('persistSkillValues', () => {

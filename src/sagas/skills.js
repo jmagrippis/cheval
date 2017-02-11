@@ -4,7 +4,7 @@ import { call, select, throttle } from 'redux-saga/effects'
 
 import { getSkillIdValuesMap, getUserId } from '../reducers'
 import { SET_SKILL_VALUE } from '../constants/actionTypes'
-import { writeUserSkills } from '../firebase'
+import { writeUserSkills } from '../db/writers'
 import type { Action } from '../types'
 
 export function* persistSkillValues (action: Action): Generator<*, void, *> {
