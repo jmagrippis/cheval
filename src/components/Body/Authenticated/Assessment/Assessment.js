@@ -21,9 +21,14 @@ const Title = styled.h1`
   text-align: center;
 `
 
+const Section = styled.section`
+  margin-bottom: 1.5em;
+`
+
 const Header = styled.h2`
   font-size: 1.5em;
   line-height: 1.5em;
+  margin-bottom: 1.5em;
   text-align: center;
   text-transform: capitalize;
 `
@@ -52,22 +57,22 @@ class Assessment extends PureComponent {
     return (
       <Container>
         <Title>Rate your skills!</Title>
-        <section>
+        <Section>
           <Header>Role: {role}</Header>
           <Skills
             setSkillValue={setSkillValue}
             skills={skills}
           />
-        </section>
+        </Section>
         {company && ideals.length
           ? (
-            <section>
+            <Section>
               <Header>{company} values</Header>
               <Skills
                 setSkillValue={setIdealValue}
                 skills={ideals}
               />
-            </section>
+            </Section>
             )
           : null}
       </Container>

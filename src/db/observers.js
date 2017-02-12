@@ -8,7 +8,7 @@ import type { FirebaseUser } from '../types'
 
 export const onAuthChange = (firebaseUser: FirebaseUser) => {
   if (firebaseUser) {
-    db.ref(`/users/${firebaseUser.uid}`).once('value').then(onUserRead.bind(this, firebaseUser))
+    db.ref(`/users/${firebaseUser.uid}`).once('value').then(onUserRead.bind(undefined, firebaseUser))
   } else {
     store.dispatch(setUser(null))
   }

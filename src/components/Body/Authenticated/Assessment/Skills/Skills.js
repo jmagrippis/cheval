@@ -1,6 +1,6 @@
 /* @flow */
 
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import styled from 'styled-components'
 
 import Skill from './Skill/Skill'
@@ -23,7 +23,7 @@ type DefaultProps = {
   skills: SkillsState
 }
 
-class Skills extends Component {
+class Skills extends PureComponent {
   props: Props;
 
   static defaultProps: DefaultProps
@@ -36,8 +36,9 @@ class Skills extends Component {
         {skills.map(({ id, name, value }) => (
           <Skill
             key={id}
+            id={id}
             name={name}
-            onChange={(event, value) => setSkillValue(id, value)}
+            setSkillValue={setSkillValue}
             value={value}
           />
         ))}
