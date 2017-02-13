@@ -7,30 +7,29 @@ import { setSkills } from '../actions/skills'
 import { setUser } from '../actions/user'
 import { db } from '../firebase'
 import store from '../store'
-import type { FirebaseUser } from '../types'
+import type { FirebaseUser, Skill, Ideal } from '../types'
+
+export const dbToStore = (existingValues: { [key:string]: number }, dbValues: { [key:string]: Skill | Ideal }): Array<Skill | Ideal> => reduce(
+  dbValues,
+  (accumulator, { description, name }, id) => {
+    accumulator.push(Object.assign({}, {
+      description,
+      id,
+      name,
+      value: typeof existingValues[id] !== 'undefined' ? existingValues[id] : 0.5
+    }))
+    return accumulator
+  }, []
+)
 
 export const onSkillsRead = (prevSkills: { [key:string]: number }, snapshot: Object) => {
   const skills = snapshot.val()
-  store.dispatch(setSkills(reduce(skills, (accumulator, name, id) => {
-    accumulator.push(Object.assign({}, {
-      id,
-      name,
-      value: typeof prevSkills[id] !== 'undefined' ? prevSkills[id] : 0.5
-    }))
-    return accumulator
-  }, [])))
+  store.dispatch(setSkills(dbToStore(prevSkills, skills)))
 }
 
 export const onIdealsRead = (prevIdeals: { [key:string]: number }, snapshot: Object) => {
   const ideals = snapshot.val()
-  store.dispatch(setIdeals(reduce(ideals, (accumulator, name, id) => {
-    accumulator.push(Object.assign({}, {
-      id,
-      name,
-      value: typeof prevIdeals[id] !== 'undefined' ? prevIdeals[id] : 0.5
-    }))
-    return accumulator
-  }, [])))
+  store.dispatch(setIdeals(dbToStore(prevIdeals, ideals)))
 }
 
 export const onUserRead = (firebaseUser: FirebaseUser, snapshot: Object) => {
