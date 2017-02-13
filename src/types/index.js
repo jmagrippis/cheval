@@ -7,7 +7,8 @@ export type IdToValueMap = { [key: string]: number }
 export type Ideal = {
   id: string,
   name: string,
-  value: number
+  value: number,
+  description?: string
 }
 
 export type IdealsState = Array<Ideal>
@@ -15,7 +16,8 @@ export type IdealsState = Array<Ideal>
 export type Skill = {
   id: string,
   name: string,
-  value: number
+  value: number,
+  description?: string
 }
 
 export type SkillsState = Array<Skill>

@@ -33,9 +33,10 @@ class Skills extends PureComponent {
 
     return (
       <Container>
-        {skills.map(({ id, name, value }) => (
+        {skills.map(({ description, id, name, value }) => (
           <Skill
             key={id}
+            description={description}
             id={id}
             name={name}
             setSkillValue={setSkillValue}
