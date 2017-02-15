@@ -2,24 +2,18 @@
 
 import React, { PureComponent } from 'react'
 import AppBar from 'material-ui/AppBar'
-import Avatar from 'material-ui/Avatar'
-import FlatButton from 'material-ui/FlatButton'
 import IconButton from 'material-ui/IconButton'
 import PieChart from 'material-ui/svg-icons/editor/pie-chart'
 
-import { auth } from '../../../../firebase'
+import Dropdown from './Dropdown/Dropdown'
 
 type Props = {
   avatar: string,
   name: string
-};
+}
 
 class Header extends PureComponent {
-  props: Props;
-
-  signOut () {
-    auth.signOut()
-  }
+  props: Props
 
   render () {
     const { avatar, name } = this.props
@@ -32,10 +26,9 @@ class Header extends PureComponent {
           </IconButton>
         )}
         iconElementRight={(
-          <FlatButton
-            icon={<Avatar size={32} src={avatar} />}
+          <Dropdown
+            avatar={avatar}
             label={name}
-            onClick={this.signOut}
           />
         )}
       />
