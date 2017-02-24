@@ -46,7 +46,7 @@ const StyledFooter = styled.footer`
   justify-content: center;
 `
 
-const StyledButton = styled(IconButton) `
+const StyledButton = styled(IconButton)`
   animation: ${heartBeat} 2s infinite;
 `
 
