@@ -50,7 +50,6 @@ const StyledIcon = styled(Favorite) `
   animation: ${heartBeat} 2s infinite;
 `
 
-
 class Footer extends PureComponent {
 
   render () {
