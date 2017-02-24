@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import Assessment from './Assessment/Assessment'
 import Header from './Header/Header'
+import Footer from './Footer/Footer'
 import type { IdealsState, SkillsState, User } from '../../../types'
 
 const Container = styled.div`
@@ -49,6 +50,7 @@ class Authenticated extends PureComponent {
           setSkillValue={setSkillValue}
           skills={skills}
         />
+        <Footer />
       </Container>
     )
   }
