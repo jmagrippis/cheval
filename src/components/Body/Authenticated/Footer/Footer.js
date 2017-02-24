@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react'
 import IconButton from 'material-ui/IconButton'
+import { teal500 } from 'material-ui/styles/colors'
 import Favorite from 'material-ui/svg-icons/action/favorite'
 
 import styled, { keyframes } from 'styled-components'
@@ -45,8 +46,7 @@ const StyledFooter = styled.footer`
   justify-content: center;
 `
 
-const StyledIcon = styled(Favorite) `
-  color: red !important;
+const StyledButton = styled(IconButton) `
   animation: ${heartBeat} 2s infinite;
 `
 
@@ -56,9 +56,9 @@ class Footer extends PureComponent {
     return (
       <StyledFooter>
         <StyledSpan>Made with</StyledSpan>
-        <IconButton href="https://github.com/jmagrippis/cheval">
-          <StyledIcon />
-        </IconButton>
+        <StyledButton iconStyle={{ color: teal500 }} href="https://github.com/jmagrippis/cheval">
+          <Favorite />
+        </StyledButton>
         <StyledSpan>by TripTease</StyledSpan>
       </StyledFooter>
     )
